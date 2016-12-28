@@ -11,8 +11,6 @@ env:
     - TWISTED="16.0"
     - TWISTED="15.0"
     - TWISTED="14.0"
-    - FLAKES="pyflakes"
-    - MANIFEST="manifest"
 
 matrix:
   fast_finish: true

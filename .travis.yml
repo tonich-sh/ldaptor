@@ -1,22 +1,18 @@
 language: python
+
 python:
     - "2.7"
     - "pypy-5.3.1"
+
 env:
-    - TOX_ENV=py27-twlatest
-    - TOX_ENV=py27-twtrunk
-    - TOX_ENV=py27-tw162
-    - TOX_ENV=py27-tw160
-    - TOX_ENV=py27-tw150
-    - TOX_ENV=py27-tw140
-    - TOX_ENV=pypy-twlatest
-    - TOX_ENV=pypy-twtrunk
-    - TOX_ENV=pypy-tw162
-    - TOX_ENV=pypy-tw160
-    - TOX_ENV=pypy-tw150
-    - TOX_ENV=pypy-tw140
-    - TOX_ENV=pyflakes
-    - TOX_ENV=manifest
+    - TWISTED="twlatest"
+    - TWISTED="twtrunk"
+    - TWISTED="tw162"
+    - TWISTED="tw160"
+    - TWISTED="tw150"
+    - TWISTED="tw140"
+    - FLAKES="pyflakes"
+    - MANIFEST="manifest"
 
 matrix:
   fast_finish: true
@@ -24,10 +20,9 @@ matrix:
 #    - env: TOX_ENV=pyflakes
 
 install:
-  - pip install tox coveralls
+  - pip install tox-travis coveralls
 
-script:
-  - tox -e $TOX_ENV
+script: tox
 
 after_success:
     - coveralls

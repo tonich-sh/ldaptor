@@ -5,12 +5,12 @@ python:
     - "pypy-5.3.1"
 
 env:
-    - TWISTED="twlatest"
-    - TWISTED="twtrunk"
-    - TWISTED="tw162"
-    - TWISTED="tw160"
-    - TWISTED="tw150"
-    - TWISTED="tw140"
+    - TWISTED="latest"
+    - TWISTED="trunk"
+    - TWISTED="16.2"
+    - TWISTED="16.0"
+    - TWISTED="15.0"
+    - TWISTED="14.0"
     - FLAKES="pyflakes"
     - MANIFEST="manifest"
 

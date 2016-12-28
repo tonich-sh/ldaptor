@@ -648,7 +648,7 @@ class LDAPMatchingRuleAssertion(BERSequence):
                    [self.matchingRule, self.type, self.matchValue, self.dnAttributes]), tag=self.tag))
 
     def __repr__(self):
-        l=[]
+        l = []
         l.append('matchingRule=%s' % repr(self.matchingRule))
         l.append('type=%s' % repr(self.type))
         l.append('matchValue=%s' % repr(self.matchValue))

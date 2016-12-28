@@ -20,7 +20,6 @@ from ldaptor.protocols import pureber, pureldap
 from ldaptor import usage, ldapfilter, config
 from twisted.internet import reactor
 from socket import inet_aton, inet_ntoa
-import sets
 
 
 def my_aton_octets(ip):
@@ -88,7 +87,7 @@ class Group:
     def __init__(self, dn, bootFile=None):
         self.dn = dn
         self.bootFile = bootFile
-        self.hosts = sets.Set()
+        self.hosts = set()
 
     def addHost(self, host):
         if host.group is not None:
@@ -100,7 +99,7 @@ class Group:
             self.hosts.add(host)
 
     def printDHCP(self, domain, addrs, prefix=''):
-        addresses = sets.Set([addr
+        addresses =set([addr
                               for host in self.hosts
                               for addr in host.ipAddresses])
         addresses.intersection_update(addrs)
@@ -188,7 +187,7 @@ class Net:
 
         print '\n'.join([prefix+line for line in r])
 
-        addrs = sets.Set()
+        addrs = set()
         for addr in self.hosts:
             addrs.add(addr)
 

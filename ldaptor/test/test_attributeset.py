@@ -3,7 +3,6 @@ Test cases for ldaptor.attributeset
 """
 
 from twisted.trial import unittest
-import sets
 from ldaptor import attributeset
 
 class TestComparison(unittest.TestCase):
@@ -41,22 +40,22 @@ class TestSetOperations(unittest.TestCase):
     def testDifference(self):
         a = attributeset.LDAPAttributeSet('k', ['b', 'c', 'd'])
         b = attributeset.LDAPAttributeSet('k', ['b', 'c', 'e'])
-        self.assertEquals(a - b, sets.Set(['d']))
+        self.assertEquals(a - b, {'d'})
 
     def testUnion(self):
         a = attributeset.LDAPAttributeSet('k', ['b', 'c', 'd'])
         b = attributeset.LDAPAttributeSet('k', ['b', 'c', 'e'])
-        self.assertEquals(a | b, sets.Set(['b', 'c', 'd', 'e']))
+        self.assertEquals(a | b, {'b', 'c', 'd', 'e'})
 
     def testIntersection(self):
         a = attributeset.LDAPAttributeSet('k', ['b', 'c', 'd'])
         b = attributeset.LDAPAttributeSet('k', ['b', 'c', 'e'])
-        self.assertEquals(a & b, sets.Set(['b', 'c']))
+        self.assertEquals(a & b, {'b', 'c'})
 
     def testSymmetricDifference(self):
         a = attributeset.LDAPAttributeSet('k', ['b', 'c', 'd'])
         b = attributeset.LDAPAttributeSet('k', ['b', 'c', 'e'])
-        self.assertEquals(a ^ b, sets.Set(['d', 'e']))
+        self.assertEquals(a ^ b, {'d', 'e'})
 
     def testCopy(self):
         class Magic:
@@ -73,8 +72,8 @@ class TestSetOperations(unittest.TestCase):
         self.assertIdentical(magicFromA, magicFromB)
 
         a.update('x')
-        self.assertEquals(a, sets.Set(['b', 'c', 'd', m1, 'x']))
-        self.assertEquals(b, sets.Set(['b', 'c', 'd', m1]))
+        self.assertEquals(a, {'b', 'c', 'd', m1, 'x'})
+        self.assertEquals(b, {'b', 'c', 'd', m1})
 
     def testDeepCopy(self):
         class Magic:
@@ -94,5 +93,5 @@ class TestSetOperations(unittest.TestCase):
         self.assertNotIdentical(magicFromA, magicFromB)
 
         a.update('x')
-        self.assertEquals(a, sets.Set(['a', m1, 'x']))
-        self.assertEquals(b, sets.Set(['a', m1]))
+        self.assertEquals(a, {'a', m1, 'x'})
+        self.assertEquals(b, {'a', m1})
